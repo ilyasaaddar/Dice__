@@ -31,7 +31,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('roblox-background.jpg'); /* Replace with your actual Roblox-themed background image */
+    background-image: url('roblox-background.jpg'); /* IMPORTANT: Replace with your actual Roblox-themed background image */
     background-size: cover;
     background-position: center;
     filter: blur(4px) brightness(0.6); /* Slightly blur and darken for readability */
@@ -174,6 +174,7 @@ body {
     padding: 60px 20px;
     border-bottom: 4px solid var(--roblox-blue);
     box-shadow: 0 3px 10px var(--shadow-light);
+    text-align: center; /* Center align all text in this section */
 }
 
 .process-section h2 {
@@ -181,71 +182,83 @@ body {
     font-size: 2.8em;
     color: var(--roblox-dark-blue);
     text-shadow: 2px 2px 0px var(--roblox-yellow);
-    margin-bottom: 40px;
-    text-align: center;
+    margin-bottom: 30px; /* Reduced margin as text flows */
 }
 
-.steps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
+.quick-process p {
+    font-size: 1.3em;
+    color: var(--dark-text);
+    max-width: 700px;
+    margin: 0 auto 20px auto; /* Center text and add margin below */
+    line-height: 1.5;
 }
 
-.step-item {
-    background-color: var(--gray-bg);
-    padding: 25px;
-    border-radius: 10px;
-    border: 2px solid var(--roblox-blue);
-    box-shadow: 0 5px 15px var(--shadow-light);
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.step-item:hover {
-    transform: translateY(-5px);
-}
-
-.icon-circle {
-    width: 60px;
-    height: 60px;
-    background-color: var(--roblox-red);
-    color: var(--light-text);
-    border-radius: 50%;
+.fake-input-group {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 2.2em;
-    margin: 0 auto 20px auto;
-    border: 3px solid var(--roblox-yellow);
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
-}
-
-.step-item h3 {
-    font-size: 1.6em;
-    color: var(--roblox-dark-blue);
-    margin-bottom: 15px;
+    gap: 15px; /* Space between input fields */
+    margin-bottom: 30px;
 }
 
 .fake-input,
 .fake-input select {
-    width: calc(100% - 20px);
-    padding: 12px;
-    margin-bottom: 15px;
+    width: calc(80% - 20px); /* Adjust width for mobile */
+    max-width: 400px; /* Max width for desktop */
+    padding: 15px;
     border: 2px solid var(--roblox-blue);
-    border-radius: 5px;
-    font-size: 1.1em;
+    border-radius: 8px;
+    font-size: 1.2em;
     text-align: center;
     background-color: var(--light-text);
     color: var(--dark-text);
-    box-shadow: inset 0 1px 3px var(--shadow-light);
+    box-shadow: inset 0 2px 5px var(--shadow-light);
+    transition: all 0.3s ease;
 }
 
-.verification-text {
-    font-size: 1.1em;
-    color: var(--dark-text);
+.fake-input:focus,
+.fake-input select:focus {
+    border-color: var(--roblox-green);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    outline: none;
 }
+
+.verification-intro {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.4em;
+    color: var(--roblox-dark-blue);
+    margin: 40px auto 20px auto;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+    max-width: 600px;
+}
+
+.offer-options {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.offer-options li {
+    background-color: var(--roblox-yellow);
+    color: var(--dark-text);
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    border: 2px solid var(--roblox-dark-blue);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.offer-options li:hover {
+    transform: translateY(-3px);
+    background-color: #FFC000; /* Slightly darker yellow */
+}
+
 
 .cta-button {
     display: inline-block;
@@ -392,6 +405,12 @@ body {
     text-decoration: underline;
 }
 
+.footer-note {
+    margin-top: 15px;
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.5);
+}
+
 /* Animations */
 @keyframes pulseGlow {
     0% { box-shadow: 0 8px 20px rgba(0, 255, 0, 0.5); }
@@ -401,7 +420,7 @@ body {
 
 @keyframes flashBorder {
     0%, 100% { border-color: var(--roblox-yellow); }
-    50% { border-color: var(--roblox-light-text); } /* A bright flash */
+    50% { border-color: var(--light-text); } /* A bright flash */
 }
 
 @keyframes bounceIn {
@@ -464,8 +483,16 @@ body {
     .process-section h2, .urgency-testimonials-section h2 {
         font-size: 2em;
     }
-    .steps-grid {
-        grid-template-columns: 1fr;
+    .fake-input, .fake-input select {
+        width: calc(90% - 20px);
+    }
+    .offer-options {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .offer-options li {
+        width: 80%;
+        margin: 0 auto;
     }
     .cta-button {
         font-size: 1.5em;
@@ -509,14 +536,19 @@ body {
     .process-section h2, .urgency-testimonials-section h2 {
         font-size: 1.6em;
     }
-    .icon-circle {
-        width: 50px;
-        height: 50px;
-        font-size: 1.8em;
+    .quick-process p {
+        font-size: 1.1em;
     }
     .fake-input, .fake-input select {
         padding: 10px;
         font-size: 1em;
+    }
+    .verification-intro {
+        font-size: 1.2em;
+    }
+    .offer-options li {
+        font-size: 1em;
+        padding: 10px 20px;
     }
     .cta-button {
         font-size: 1.2em;
